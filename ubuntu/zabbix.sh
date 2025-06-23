@@ -73,7 +73,7 @@ execute_step 0 "sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-ge
 
 execute_step 1 "sudo sed -i 's/^# \\(en_US\\.UTF-8 UTF-8\\)$/\\1/' /etc/locale.gen && sudo locale-gen && sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8"
 
-execute_step 2 "wget wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb && sudo dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb && sudo apt-get update -y && sudo rm -f zabbix-release_latest_7.0+ubuntu22.04_all.deb"
+execute_step 2 "wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.0+ubuntu22.04_all.deb && sudo dpkg -i zabbix-release_latest_7.0+ubuntu22.04_all.deb && sudo apt-get update -y && sudo rm -f zabbix-release_latest_7.0+ubuntu22.04_all.deb"
 
 execute_step 3 "sudo apt-get install -y zabbix-server-pgsql zabbix-frontend-php php8.1-pgsql zabbix-nginx-conf zabbix-sql-scripts zabbix-agent2"
 
