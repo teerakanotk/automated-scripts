@@ -1,9 +1,8 @@
 #!/bin/bash
-
-# Date: 2025-06-21
 # App: Zabbix server 7.0 LTS
 # Database: PostgreSQL 17
 # Web Server: Nginx
+# OS: Ubuntu 24.04 LTS (Noble)
 
 # Define log file path for detailed output
 LOG_FILE="/tmp/zabbix_install_$(date +%Y%m%d%H%M%S).log"
