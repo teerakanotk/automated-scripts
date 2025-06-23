@@ -1,5 +1,3 @@
-# automated-scripts
-
 ## How to use
 
 ```bash
