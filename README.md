@@ -1,7 +1,7 @@
 ## How to use
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/teerakanotk/automated-scripts/main/<path_to_script>/<script>.sh
+curl -sSL https://raw.githubusercontent.com/teerakanotk/automated-scripts/main/<path_to_script>/<script>.sh | bash
 ```
 
 > replace `<path_to_script>` with the actual path to the script<br/>
