@@ -6,6 +6,6 @@
 SERVER_NAME=$(hostname -I | awk '{print $1}')
 
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /etc/ssl/private/ssl-selfsigned.key \
-    -out /etc/ssl/certs/ssl-selfsigned.crt \
+    -keyout /etc/ssl/private/self-signed.key \
+    -out /etc/ssl/certs/self-signed.crt \
     -subj "/CN=$SERVER_NAME"
