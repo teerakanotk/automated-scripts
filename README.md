@@ -1,4 +1,4 @@
-# How to Use Automated Scripts
+# How to Use Helper scripts
 
 To quickly download and execute a script, use the following command:
 
