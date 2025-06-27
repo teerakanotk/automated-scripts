@@ -88,7 +88,7 @@ ZABBIX_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9#@ | head -c 22)
 # Also log the password for later reference
 echo "ZABBIX_PASSWORD: $ZABBIX_PASSWORD" >>"$LOG_FILE"
 
-execute_step 5 "sudo -u postgres psql -c \"CREATE USER  WITH ENCRYPTED PASSWORD '$ZABBIX_PASSWORD';\" && sudo -u postgres createdb -O \"$ZABBIX_USER\" \"$ZABBIX_DB\" && sudo zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u $ZABBIX_USER psql $ZABBIX_DB"
+execute_step 5 "sudo -u postgres psql -c \"CREATE USER $ZABBIX_USER WITH ENCRYPTED PASSWORD '$ZABBIX_PASSWORD';\" && sudo -u postgres createdb -O \"$ZABBIX_USER\" \"$ZABBIX_DB\" && sudo zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u $ZABBIX_USER psql $ZABBIX_DB"
 
 execute_step 6 "sudo sed -i \"s/^# DBPassword=.*/DBPassword=$ZABBIX_PASSWORD/\" /etc/zabbix/zabbix_server.conf"
 
