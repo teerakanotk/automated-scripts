@@ -1,8 +1,4 @@
 #!/bin/bash
-# App: Zabbix server 7.0 LTS
-# Database: PostgreSQL 17
-# Web Server: Nginx
-# OS: Ubuntu 24.04 LTS (Noble)
 
 # Define log file path for detailed output
 LOG_FILE="/tmp/zabbix_install_$(date +%Y%m%d%H%M%S).log"
@@ -59,7 +55,6 @@ function execute_step() {
 
 echo "========================================================"
 echo "Starting Zabbix Server 7.0 LTS installation"
-echo "Detailed installation: $LOG_FILE"
 echo "========================================================"
 
 echo ""
@@ -77,15 +72,13 @@ execute_step 3 "sudo apt install -y zabbix-server-pgsql zabbix-frontend-php php8
 
 execute_step 4 "sudo apt install -y postgresql-common && echo | sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh && sudo apt-get install -y postgresql-17"
 
-# --- Create initial PostgreSQL database for Zabbix ---
+# --- Create initial database ---
 ZABBIX_DB="zabbix"
 ZABBIX_USER="zabbix"
 # Generate a strong, random password for the Zabbix database user
-# Uses /dev/urandom for randomness, 'tr' to filter for alphanumeric characters and underscore,
-# and 'head -c 22' to get a 22-character string.
 ZABBIX_PASSWORD=$(head /dev/urandom | tr -dc A-Za-z0-9#@ | head -c 22)
 
-# Also log the password for later reference
+# Log the password
 echo "ZABBIX_PASSWORD: $ZABBIX_PASSWORD" >>"$LOG_FILE"
 
 execute_step 5 "sudo -u postgres psql -c \"CREATE USER $ZABBIX_USER WITH ENCRYPTED PASSWORD '$ZABBIX_PASSWORD';\" && sudo -u postgres createdb -O \"$ZABBIX_USER\" \"$ZABBIX_DB\" && sudo zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u $ZABBIX_USER psql $ZABBIX_DB"
@@ -110,5 +103,5 @@ echo "Default Zabbix frontend login credentials"
 echo "  Username: Admin"
 echo "  Password: zabbix"
 echo ""
-echo "Please change the default passwords after the first login"
+echo "Detailed installation: $LOG_FILE"
 echo "========================================================"
