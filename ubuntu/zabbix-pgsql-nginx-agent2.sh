@@ -1,12 +1,11 @@
 #!/bin/bash
-
 # Define log file path for detailed output
 LOG_FILE="/tmp/zabbix_install_$(date +%Y%m%d%H%M%S).log"
 
 STEPS=(
-    "Update and install package requirement"
-    "Set locale variables to en_US.UTF8"
-    "Install Zabbix repository"
+    "Update and install requirement package"
+    "Set locale to en_US.UTF8"
+    "Add Zabbix repository"
     "Install Zabbix server, frontend, agent2 and plugins"
     "Install Postgresql database"
     "Create initial database"
