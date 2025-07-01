@@ -1,4 +1,3 @@
-#!/bin/bash
 # Define log file path for detailed output
 LOG_FILE="/tmp/zabbix_install_$(date +%Y%m%d%H%M%S).log"
 
